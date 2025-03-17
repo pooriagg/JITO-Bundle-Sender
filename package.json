@@ -1,0 +1,19 @@
+{
+  "name": "jito-bundle-sender",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@solana-program/compute-budget": "^0.7.0",
+    "@solana-program/system": "^0.7.0",
+    "@solana/codecs": "^2.1.0",
+    "@solana/web3.js": "^2.0.0",
+    "jito-js-rpc": "^0.1.0"
+  }
+}
