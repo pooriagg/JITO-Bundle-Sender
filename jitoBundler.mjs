@@ -17,7 +17,10 @@ import {
     getSetComputeUnitPriceInstruction
 } from "@solana-program/compute-budget";
 import { getTransferSolInstruction } from "@solana-program/system";
-import { getBase58Decoder } from "@solana/codecs";
+import {
+    getBase58Decoder,
+    // getBase64Decoder
+} from "@solana/codecs";
 
 import { JitoJsonRpcClient } from "jito-js-rpc";
 
@@ -112,6 +115,27 @@ import { JitoJsonRpcClient } from "jito-js-rpc";
         ]
     );
     console.log("Bundle id: \n", bundleResult.result);
+    
+    // OR use base64-encoded transactions which are faster than base58-encoded transactions
+    // const bundleResult = await jitoClient.sendBundle(
+    //     [
+    //         [
+    //             getBase64Decoder().decode(
+    //                 getTransactionEncoder().encode(
+    //                     fullySignedTransaction1
+    //                 )
+    //             ),
+    //             getBase64Decoder().decode(
+    //                 getTransactionEncoder().encode(
+    //                     fullySignedTransaction2
+    //                 )
+    //             )
+    //         ],
+    //         {
+    //             encoding: "base64"
+    //         }
+    //     ]
+    // );
 
     const inflightStatus = await jitoClient.confirmInflightBundle(bundleResult.result, 100_000); // 100 seconds timeout
     console.log("Inflight status: \n", inflightStatus.confirmation_status);
